@@ -1,0 +1,19 @@
+*.class
+*.classpath
+*idea*
+*/target*
+*.project*
+.settings*
+
+# Package Files #
+*.jar
+*.ear
+*metatata*
+
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+*.iml

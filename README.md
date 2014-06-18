@@ -1,0 +1,1 @@
+Fun coding projects for stuff I find interesting, topics for teaching others, and to dig deeper in cool programming areas. These will all be on my blog at http://programmerkoolaid.blogspot.com/.

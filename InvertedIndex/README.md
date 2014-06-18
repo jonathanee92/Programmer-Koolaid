@@ -1,0 +1,1 @@
+InvertedIndex side project for Coding blog. Aimed to help understand textual search engines. Will be multi part coding blog to understand better abstractions and ways of improving search engine performance and results. First push will be a fairly naive inverted index meant to teach about inverted indices.
