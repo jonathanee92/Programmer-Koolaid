@@ -11,6 +11,7 @@ public class SimpleTokenizer implements Tokenizer {
     private static final String specialCharactersRegex =
             "[?\\.!\\*\\t\\,\\#\\d\\<\\>\\[\\]\\;\\:\\\"\\\\\\/\\+\\@\\#\\^\\%\\$]";
 
+    // TODO: Hash wordAtIndices so one can find words very quickly... maybe not needed
 	public WordAtIndex[] getWordTokensFromText(String text) {
         List<WordAtIndex> wordAtIndices = new LinkedList<WordAtIndex>();
         String[] textSplit = text.split("\n");
@@ -19,23 +20,12 @@ public class SimpleTokenizer implements Tokenizer {
             textLine = textLine.toLowerCase();
 
             String[] words = textLine.split(" ");
-            for(String word : words) {
+            for(String word : words) { // TODO: Add bloom filter for stop word is in store
                 if(word.length() > 2 && !stopWords.isWordInStore(word)) {
                     wordAtIndices.add(new WordAtIndex(word, i));
                 }
             }
         }
         return wordAtIndices.toArray(new WordAtIndex[wordAtIndices.size()]);
-    }
-
-    private String[] getNonStopWords(List<String> words) {
-        List<String> nonStopWords = new LinkedList<String>();
-        for(String word : words) {
-            if(!stopWords.isWordInStore(word)) {
-                nonStopWords.add(word);
-            }
-        }
-
-        return nonStopWords.toArray(new String[nonStopWords.size()]);
     }
 }

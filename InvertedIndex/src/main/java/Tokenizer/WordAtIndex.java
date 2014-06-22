@@ -1,8 +1,8 @@
 package Tokenizer;
 
 public class WordAtIndex {
-    String word;
-    int index;
+    private String word;
+    private int index;
 
     public WordAtIndex(String word, int index) {
         this.word = word;

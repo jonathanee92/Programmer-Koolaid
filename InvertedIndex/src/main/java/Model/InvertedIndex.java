@@ -5,7 +5,6 @@ import Tokenizer.WordAtIndex;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 public class InvertedIndex {
@@ -14,8 +13,7 @@ public class InvertedIndex {
     private Map<String, LinkedList<DocWordIndex>> invertedIndex = new
             HashMap<String, LinkedList<DocWordIndex>>();
 
-    public void addDocumentToInvertedIndex(String documentID,
-                                           WordAtIndex[] wordsWithIndices) {
+    public void addDocument(String documentID, WordAtIndex[] wordsWithIndices) {
         // Cache contains key (word) and value (list of indices where word is in document)
         Map<String, LinkedList<Integer>> cache = new HashMap<String, LinkedList<Integer>>();
         for (int i = 0; i < wordsWithIndices.length; i++) {
@@ -37,16 +35,14 @@ public class InvertedIndex {
         if (!cache.containsKey(word)) {
             cache.put(word, new LinkedList<Integer>());
         }
-        List<Integer> wordIndices = cache.get(word);
-        wordIndices.add(wordIndex);
+        cache.get(word).add(wordIndex);
     }
 
     private void addDocWordIndex(String word, DocWordIndex docWordIndex) {
         if (!invertedIndex.containsKey(word)) {
             invertedIndex.put(word, new LinkedList<DocWordIndex>());
         }
-        List<DocWordIndex> docWordIndices = invertedIndex.get(word);
-        docWordIndices.add(docWordIndex);
+        invertedIndex.get(word).add(docWordIndex);
     }
 
     public Iterator<DocWordIndex> getDocWordIndicesForWord(String word) {
